@@ -1,0 +1,105 @@
+/* html{
+     -webkit-transform: translate3d(0,0,0); 
+  }
+  */
+body{
+    background-image: url('background.jpg');
+    background-size:cover;
+    font-family: sans-serif;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content:center;
+} 
+h1{
+    font: size 18px;
+    text-align: center;
+}
+
+h3{
+    font: size 36px;
+    text-align: center;
+    margin: auto;
+}
+
+.loginform{
+    text-align: center;
+    margin: auto;
+}
+
+.registerform{
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    
+}
+.register{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+input{
+    margin-bottom: 10px;
+}
+
+.addprod{
+    height: fit-content;
+    width: fit-content;
+    margin: auto; 
+}
+
+.addproduct{
+    display: flex;
+    flex-direction: column;
+}
+
+.func{
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    
+}
+
+.funcdiv{
+    margin-top: 200px;
+
+}
+
+li{
+    margin-bottom: 20px;
+}
+
+th{
+    text-align: left;
+    background-color: grey;
+    
+
+}
+table th,table td{
+    border: 1px solid black;
+    padding: 10px;
+    vertical-align: top;
+    font-weight: bold;
+}
+th{
+    width: fit-content;
+}
+
+th {
+    background-color: #54585d;
+    border: 1px solid #54585d;
+}
+th:hover {
+    background-color: #64686e;
+}
+th a {
+    display: block;
+    text-decoration:none;
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 13px;
+}

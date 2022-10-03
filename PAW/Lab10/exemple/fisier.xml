@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cursuriweb>
+    <site categorie="Programare">
+        <url>https://edu.csed.ugal.ro/course/view.php?id=241</url>
+        <descriere> Aplicații Internet cu Baze de Date</descriere>
+    </site>
+    <site categorie="Programare">
+        <url>https://edu.csed.ugal.ro/course/view.php?id=215</url>
+        <descriere>Elemente de grafică computațională</descriere>
+    </site>
+    <site categorie="Limbi straine">
+        <url>https://www.britishcouncil.ro/engleza/invata-online/gratis</url>
+        <descriere>Cursuri gratuite, exercitii si rersurse pentru invatat limba
+            engleza</descriere>
+    </site>
+</cursuriweb>

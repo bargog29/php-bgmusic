@@ -1,0 +1,96 @@
+create table FUNCTII 
+(ID_FUNCTIE INT, 
+DENUMIRE VARCHAR(40) NOT NULL, 
+SALARIU INT
+); 
+alter table functii 
+add constraint pk_FUNCTIE primary key(ID_FUNCTIE);
+
+create table ANGAJATI 
+(ID_ANGAJAT INT,
+NUME VARCHAR(20) not null, 
+PRENUME VARCHAR(20), 
+ADRESA VARCHAR(20), 
+TELEFON INT,
+DATA_ANGAJARE DATE,
+EMAIL VARCHAR(50) ,
+ID_FUNCTIE INT,
+constraint ID_FUNCTIE_pk foreign key(id_functie) references Functii(id_functie) 
+); 
+alter table angajati 
+add constraint pk_angajati primary key(ID_ANGAJAT);
+
+create table CLIENTI
+(ID_CLIENT INT, 
+NUME VARCHAR(20), 
+PRENUME VARCHAR(20), 
+TELEFON INT, 
+ADRESA VARCHAR(20),
+EMAIL VARCHAR(50) ,
+CNP INT
+); 
+alter table clienti 
+add constraint pk_client primary key(ID_CLIENT);
+
+create table PRODUSE 
+(ID_PRODUS INT,
+CATEGORIE VARCHAR(20), 
+PRET INT,
+DENUMIRE VARCHAR(20),
+GREUTATE INT,
+GARANTIE VARCHAR(20)
+); 
+alter table Produse 
+add constraint pk_produs primary key (ID_PRODUS); 
+
+create table FURNIZORI 
+(ID_FURNIZOR INT,
+DENUMIRE VARCHAR(20), 
+ADRESA VARCHAR(30)
+); 
+alter table Furnizori 
+add constraint id_furnizor_pk primary key(ID_FURNIZOR);
+
+create table STOC 
+(NR_STOC INT,
+CANTITATE INT,
+ID_PRODUS INT,
+ID_FURNIZOR INT
+); 
+alter table Stoc 
+add constraint pk_stoc primary key(nr_stoc); 
+alter table Stoc 
+add constraint id_produs_fk foreign key(id_produs) references Produse(id_produs); 
+alter table Stoc 
+add constraint id_furnizor_fk foreign key(id_furnizor) references Furnizori(id_furnizor); 
+
+create table COMENZI
+( 
+Nr_comanda INT,
+ID_PRODUS INT,
+MODALITATE_PLATA VARCHAR(20),
+ADRESA VARCHAR(30),
+TRANSPORT VARCHAR(20)
+); 
+Alter table comenzi
+add constraint pk_comanda primary key(nr_comanda); 
+alter table Comenzi 
+add constraint fk_produs foreign key(id_produs) references Produse(id_produs);
+
+Create table LOGIN
+(Username VARCHAR(30),
+Parola VARCHAR(30),
+Nume VARCHAR(20),
+Prenume VARCHAR(20),
+Email VARCHAR(50),
+Telefon INT,
+Judet VARCHAR(20)
+);	
+
+Create table LOGINADMIN
+(Username VARCHAR(30),
+Parola VARCHAR(30),
+Nume VARCHAR(20),
+Prenume VARCHAR(20),
+Functie VARCHAR(20)
+);

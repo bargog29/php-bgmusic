@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Exemplu2 Ajax JSON</title>
+  <script type="text/javascript">
+    function ajax_json(tagID) {
+      let ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new
+      ActiveXObject('Microsoft.XMLHTTP');
+      let f_nume = document.f_test2.nume.value;
+      let date_send = 'nume='+f_nume;
+      ob_ajax.open("POST", 'test2_ajaxjson.php', true);
+      ob_ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      ob_ajax.send(date_send);
+      ob_ajax.onreadystatechange = function() {
+        if (ob_ajax.readyState === 4) {
+          let ex_ajsn = ob_ajax.responseText;
+          ex_ajsn = ex_ajsn.replace(/\\/gi, '');
+          document.getElementById(tagID).innerHTML = ex_ajsn;
+          eval("var obj_ajsn ="+ex_ajsn);
+          document.getElementById(tagID).innerHTML += '<br /><br />Date returnate pt. <b>'+ f_nume+ '</b> = '+ obj_ajsn[f_nume];
+          document.getElementById(tagID).innerHTML += '<br />A doua valoare din datele pt. <b>'+ f_nume+ '</b> = '+ obj_ajsn[f_nume][1];
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<div id="raspuns">Zona in care va fi afisat raspunsul JSON de la scriptul PHP si
+  date din acest raspuns, prelucrate in JavaScript</div>
+<form action="test2_ajaxjson.php" method="post" name="f_test2"
+      onclick="ajax_json('raspuns'); return false">
+  Scrieti Numele: <input name="nume" type="text" /><br />
+  <input type="submit" value="Trimite" />
+</form>
+</body>
+</html>

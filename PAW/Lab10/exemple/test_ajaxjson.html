@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Exemplu Ajax JSON</title>
+  <script type="text/javascript">
+    function ajax_json(tagID) {
+      let ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+      if (document.getElementById('starec1').checked)
+        let radio_b = document.getElementById('starec1').value;
+      else if (document.getElementById('starec2').checked)
+        let radio_b = document.getElementById('starec2').value;
+      else
+        let radio_b = 'Neprecizat';
+      let date_jsn = '{"nume":"'+ document.f_test.nume.value+ '", "email":"'+
+              document.f_test.email.value+ '", "starec":"'+ radio_b+ '"}';
+      let date_send = 'jsn='+date_jsn;
+      ob_ajax.open("POST", 'test_ajaxjson.php', true);
+      ob_ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      ob_ajax.send(date_send);
+      ob_ajax.onreadystatechange = function() {
+        if (ob_ajax.readyState === 4) {
+          document.getElementById(tagID).innerHTML = ob_ajax.responseText;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<div id="raspuns">Zona in care va fi afisat raspunsul de la scriptul PHP</div>
+<form action="" method="post" name="f_test">
+  <h5>Completati urmatoarele date</h5>
+  Nume: <input name="nume" type="text" /><br />
+  E-mail: <input name="email" type="text" /><br />
+  Starea civila:<br />
+  Casatorit <input type="radio" name="starec" id="starec1" value="Casatorit" />
+  &nbsp;
+  Necasatorit <input type="radio" name="starec" id="starec2" value="Necasatorit"
+/><br />
+  <input type="button" value="Trimite" onclick="ajax_json('raspuns')" />
+</form>
+</body>
+</html>

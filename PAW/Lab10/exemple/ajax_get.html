@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Exemplu Ajax GET</title>
+  <script type="text/javascript">
+    function get_XmlHttp() {
+      let xmlHttp = null;
+      if(window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+      }
+      else if(window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      return xmlHttp;
+    }
+    function ajaxrequest(serverPage, tagID) {
+      let cerere_http = get_XmlHttp();
+      let url = serverPage+'?test='+document.getElementById(tagID).innerHTML;
+      cerere_http.open("GET", url, true);
+      cerere_http.send(null);
+      cerere_http.onreadystatechange = function() {
+        if (cerere_http.readyState === 4) {
+          document.getElementById(tagID).innerHTML = cerere_http.responseText;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<h5 style="cursor:pointer;" onclick="ajaxrequest('test_get.php', 'context')"><u>Click</u></h5>
+<div id="context">Sir transmis cu Ajax la server si prelucrat cu PHP</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Răspunsul primit de la fișierul la care se trimite cererea.

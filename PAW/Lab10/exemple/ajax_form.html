@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Exemplu Ajax cu Form</title>
+  <script type="text/javascript">
+    function get_XmlHttp() {
+      let xmlHttp = null;
+      if(window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+      }
+      else if(window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      return xmlHttp;
+    }
+    function ajaxrequest(formular, tagID) {
+      let cerere_http = get_XmlHttp();
+      let numele = formular.nume.value;
+      let mesajul = formular.mesaj.value;
+      let datele = 'nume='+numele+'&mesaj='+mesajul;
+      cerere_http.open("POST", 'test_form.php', true);
+      cerere_http.setRequestHeader("Content-type", "application/x-www-formurlencoded");
+      cerere_http.send(datele);
+      cerere_http.onreadystatechange = function() {
+        if (cerere_http.readyState === 4) {
+          document.getElementById(tagID).innerHTML = cerere_http.responseText;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<form action="test_form.php" method="post" name="form1"
+      onsubmit="ajaxrequest(this, 'raspuns'); return false;">
+  Numele tau: <input type="text" name="nume" id="nume" size="20" maxlength="33"
+/><br />
+  Transmite un mesaj:<br />
+  <textarea name="mesaj" id="mesaj" cols="25" rows="4"></textarea><br />
+  <input type="submit" value="Trimite" />
+</form>
+<div id="raspuns"> </div>
+</body>
+</html>

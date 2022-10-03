@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+    <title>Teste XMLHttpRequest</title>
+    <script type="text/javascript">
+        function makerequest(serverPage, tagID) {
+            let ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new
+            ActiveXObject('Microsoft.XMLHTTP');
+            ob_ajax.open("GET", serverPage);
+            ob_ajax.send(null);
+            ob_ajax.onreadystatechange = function() {
+                if (ob_ajax.readyState === 4) {
+                    document.getElementById(tagID).innerHTML = ob_ajax.responseText;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h5 style="cursor:pointer;" onclick="makerequest('citFisTxt.txt', 'raspuns')"><u><u>Click</u></u></h5>
+<div id="raspuns">Continutul initial din tag-ul DIV</div>
+</body>
+</html>

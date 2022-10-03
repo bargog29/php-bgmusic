@@ -1,0 +1,22 @@
+- lucrul cu baze de date relationale (MySQL, Oracle, PostgreSQL, SQL Server) folosind pachetul PDO din PHP
+- operatii de adaugare, modificare/editare, stergere
+- cautare
+- autentificare
+- ordonare a datelor (de exemplu pentru o lista de produse ordonarea dupa pret crescator sau descrescator)
+- filtrare (dupa mai multe criterii - de exemplu pentru filtrarea unor produse dupa mai multe 
+	criterii in acelasi timp - pret mai mic decat, mai mare decat, dupa stoc, dupa producator, etc)
+- realizarea unui istoric de utilizare a aplicatiei 
+              (de pastrat in baza de date in una sau mai multe tabele informatii despre data si ora, utilizator, rol, operatia logica - de exemplu operatia modificare produs, comanda SQL)
+- export in PDF si XLS (de exemplu exportul unei factura in PDF, exportul unei liste de produse in XLS)
+
+
+- realizarea de rapoarte (prezentarea sintetica a datelor dintr-o perioada de timp selectabila de catre utilizator 
+	- de ex. raport zilnic cu vanzari de produse pe categorii intr-o perioada selectata)
+- realizarea de diagrame/grafice (de exemplu pentru un raport zilnic cu vanzari de produse pe categorii dintr-o perioada selectata)
+			  
+			  
+ $sql2 = "INSERT INTO bgmusic.comistoric(data,query) VALUES
+            (CURRENT_TIMESTAMP(),
+            \"cont:admin,operatia:DELETE,tabela:produs,comanda:DELETE FROM bgmusic.produs WHERE id_produs=$idprod.\")";
+
+$dbh->exec($sql2);

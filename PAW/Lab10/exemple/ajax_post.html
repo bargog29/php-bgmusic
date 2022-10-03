@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+  <title>Exemplu Ajax POST</title>
+  <script type="text/javascript">
+    function get_XmlHttp() {
+      let xmlHttp = null;
+      if(window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+      }
+      else if(window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      return xmlHttp;
+    }
+    function ajaxrequest(tagID) {
+      let cerere_http = get_XmlHttp(); 
+      let datele = 'test='+document.getElementById(tagID).innerHTML;
+      cerere_http.open("POST", 'test_post.php', true);
+      cerere_http.setRequestHeader("Content-type", "application/x-www-formurlencoded");
+      cerere_http.send(datele);
+      cerere_http.onreadystatechange = function() {
+        if (cerere_http.readyState === 4) {
+          document.getElementById(tagID).innerHTML = cerere_http.responseText;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<h5 style="cursor:pointer;" onclick="ajaxrequest('context')">Click</h5>
+<div id="context">Sir transmis cu Ajax, prin POST, la server si prelucrat cu PHP</div>
+</body>
+</html>
